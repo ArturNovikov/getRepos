@@ -2,7 +2,6 @@ const searchInput = document.getElementById('searchInput');
 const autocompleteList = document.getElementById('autocompleteList');
 const repositoryList = document.getElementById('repositoryList');
 
-// Функция debounce
 function debounce(func, delay) {
     let timeout;
     return function(...args) {
@@ -11,7 +10,6 @@ function debounce(func, delay) {
     };
 }
 
-// Функция для поиска репозиториев
 function searchRepositories(query) {
     if (!query) {
         autocompleteList.style.display = 'none';
@@ -31,7 +29,6 @@ function searchRepositories(query) {
         });
 }
 
-// Функция для добавления репозитория в список
 function addRepository(repository) {
     const li = document.createElement('li');
     li.innerHTML = `Name: ${repository.name}<br>Owner: ${repository.owner.login}<br>Stars: ${repository.stargazers_count}`;
