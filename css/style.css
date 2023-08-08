@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.woff2') format('woff2'),
+         url('../fonts/Roboto-Regular.woff') format('woff'),
+         url('../fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    border: none;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+
+#app {
+    width: 661px;
+    height: 763px;
+    background-color: rgba(196, 196, 196, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchInput {
+    width: 500px;
+    height: 61px;
+    background-color: rgba(255, 255, 255, 1);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 56.25px;
+}
+
+#autocompleteList {
+    border: 1px solid #ccc;
+    display: none;
+}
+
+#autocompleteList div {
+    width: 500px;
+    height: 61px;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 56.25px;
+    cursor: pointer;
+    background-color: rgba(227, 227, 227, 1);
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+
+#autocompleteList div:hover {
+    background-color:rgba(101, 205, 249, 1);
+}
+
+
+#repositoryList {
+    padding: 0;
+}
+
+#repositoryList li {
+    list-style-type: none;
+    width: 503px;
+    height: 101px;
+    background-color: rgba(226, 123, 235, 1);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28.13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 34px;
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.btn-delete {
+    width: 42px;
+    height: 38.5px;
+    background: url('../svj/Vector\ 7.svg'), url('../svj/Vector\ 8.svg');
+    background-position: center;
+}
+
+.btn-delete:hover {
+    cursor: pointer;
+}
+
