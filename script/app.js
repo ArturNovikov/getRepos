@@ -1,6 +1,6 @@
-const searchInput = document.getElementById('searchInput');
-const autocompleteList = document.getElementById('autocompleteList');
-const repositoryList = document.getElementById('repositoryList');
+const searchInput = document.querySelector('.searchInput');
+const autocompleteList = document.querySelector('.autocompleteList');
+const repositoryList = document.querySelector('.repositoryList');
 
 function debounce(func, delay) {
     let timeout;
@@ -12,26 +12,26 @@ function debounce(func, delay) {
 
 function searchRepositories(query) {
     if (!query) {
-        autocompleteList.style.display = 'none';
+        autocompleteList.classList.remove('autocompleteList-visible');
         return;
     }
-    fetch(`https://api.github.com/search/repositories?q=${query}`)
+    fetch(`https://api.github.com/search/repositories?q=${query}&per_page=5`)
         .then(response => response.json())
         .then(data => {
-            autocompleteList.innerHTML = '';
-            data.items.slice(0, 5).forEach(item => {
+            autocompleteList.textContent = '';
+            data.items.forEach(item => {
                 const div = document.createElement('div');
                 div.textContent = item.name;
                 div.addEventListener('click', () => addRepository(item));
                 autocompleteList.appendChild(div);
             });
-            autocompleteList.style.display = 'block';
+            autocompleteList.classList.add('autocompleteList-visible');
         });
 }
 
 function addRepository(repository) {
     const li = document.createElement('li');
-    li.innerHTML = `Name: ${repository.name}<br>Owner: ${repository.owner.login}<br>Stars: ${repository.stargazers_count}`;
+    li.innerText = `Name: ${repository.name}<br>Owner: ${repository.owner.login}<br>Stars: ${repository.stargazers_count}`;
     const deleteButton = document.createElement('button');
     deleteButton.textContent = '';
     deleteButton.classList.add('btn-delete');
@@ -39,7 +39,7 @@ function addRepository(repository) {
     li.appendChild(deleteButton);
     repositoryList.appendChild(li);
     searchInput.value = '';
-    autocompleteList.style.display = 'none';
+    autocompleteList.classList.remove('autocompleteList-visible');
 }
 
-searchInput.addEventListener('keyup', debounce(() => searchRepositories(searchInput.value), 500));
+searchInput.addEventListener('input', debounce((event) => searchRepositories(event.target.value), 500));
