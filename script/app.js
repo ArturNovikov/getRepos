@@ -31,7 +31,7 @@ function searchRepositories(query) {
 
 function addRepository(repository) {
     const li = document.createElement('li');
-    li.innerText = `Name: ${repository.name}<br>Owner: ${repository.owner.login}<br>Stars: ${repository.stargazers_count}`;
+    li.innerText = `Name: ${repository.name}\nOwner: ${repository.owner.login}\nStars: ${repository.stargazers_count}`;
     const deleteButton = document.createElement('button');
     deleteButton.textContent = '';
     deleteButton.classList.add('btn-delete');
